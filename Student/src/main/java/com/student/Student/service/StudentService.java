@@ -5,6 +5,7 @@ import com.student.Student.repository.StudentRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +35,13 @@ public class StudentService {
     ///for adding multiple students
     public List<Student> addStudentMultiple(List<Student> student){
         return studentRepo.saveAll(student);
+    }
+    public List<Student> getStudentMultiple(){
+        return studentRepo.findAll();
+    }
+
+
+    public Optional<Student> getStudentsById(Long id){
+        return studentRepo.findById(id);
     }
 }
