@@ -4,7 +4,6 @@ import com.student.Student.entity.Student;
 import com.student.Student.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,11 +35,25 @@ public class StudentController {
         return HttpStatus.MOVED_PERMANENTLY;
     }
 
-    /////for multple students
+    /////for Adding multple students
 
     @PostMapping("/addMultiple")
     public List<Student> addStudentMultiple(@RequestBody List<Student> student){
         return studentService.addStudentMultiple(student);
+    }
+
+    /////for Getting multple students
+
+    @GetMapping("/getMultiple")
+    public List<Student> getStudentMultiple(){
+        return studentService.getStudentMultiple();
+    }
+
+
+    @GetMapping("/getById/{id}")
+    public Optional<Student> getStudentById(@PathVariable("id") Long id){
+
+        return studentService.getStudentsById(id);
     }
 
 }
